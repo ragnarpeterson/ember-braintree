@@ -1,0 +1,8 @@
+<form>
+    {{braintree-dropin
+      token='{"test": "test"}'
+      onReady=(action 'onReady')
+      onPaymentMethodNonceReceived=(action 'onPaymentMethodNonceReceived')
+      onError=(action 'onError')
+    }}
+</form>
