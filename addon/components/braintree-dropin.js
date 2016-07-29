@@ -24,7 +24,7 @@ export default Ember.Component.extend(InvokeActionMixin, {
     const options = Object.assign({
       container: this.get('elementId')
     }, this.get('options'));
-    console.log(Object.assign(options, this.get('hooks')));
+    
     if (token) {
       braintree.setup(token, 'dropin', options);
     }

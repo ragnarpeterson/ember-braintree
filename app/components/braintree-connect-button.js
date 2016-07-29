@@ -1,0 +1,1 @@
+export { default } from 'ember-braintree/components/braintree-connect-button';
