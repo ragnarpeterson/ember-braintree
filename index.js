@@ -4,9 +4,14 @@
 module.exports = {
   name: 'ember-braintree',
 
-  contentFor: function(type) {
-    if (type === 'body') {
-      return '<script src="https://js.braintreegateway.com/v2/braintree.js"></script>';
-    }
+  isDevelopingAddon: function() {
+    return true;
   },
+
+  included: function(app) {
+    this._super.included(app);
+
+    app.import(app.bowerDirectory + '/braintree-web/dist/braintree.js', { prepend: true });
+    app.import(app.bowerDirectory + '/braintree-oauth-connect/braintree-oauth-connect.js', { prepend: true });
+  }
 };

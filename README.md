@@ -1,19 +1,26 @@
-# ember-braintree
+# Ember-braintree
 
-Braintree's Drop-In Payment UI as an Ember component.
+This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
 
-```bash
-# From within your ember-cli project
-ember install:addon ember-braintree
-```
+* `git clone` this repository
+* `npm install`
+* `bower install`
 
-## Usage
+## Running
 
-```hbs
-{{!-- Must be inside of a <form> --}}
-{{braintree-dropin token=braintreeClientToken action='submit'}}
-```
+* `ember serve`
+* Visit your app at http://localhost:4200.
 
-When the form is submitted, the specified `action` will be called with the Braintree nonce.
+## Running Tests
+
+* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
+* `ember test`
+* `ember test --server`
+
+## Building
+
+* `ember build`
+
+For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).

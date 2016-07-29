@@ -1,3 +1,1 @@
-import BraintreeDropin from 'ember-braintree/components/braintree-dropin';
-
-export default BraintreeDropin;
+export { default } from 'ember-braintree/components/braintree-dropin';
