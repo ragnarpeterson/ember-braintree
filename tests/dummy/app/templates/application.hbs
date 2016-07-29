@@ -1,10 +1,10 @@
-{{!-- <form>
-    {{braintree-dropin
-      token='{"test": "test"}'
-      onReady=(action 'onReady')
-      onPaymentMethodNonceReceived=(action 'onPaymentMethodNonceReceived')
-      onError=(action 'onError')
-    }}
-</form> --}}
-
 {{braintree-connect-button onError=(action 'onError') connectUrl="https://api.sandbox.braintreegateway.com:443/oauth/connect?payment_methods%5B%5D=credit_card&payment_methods%5B%5D=paypal&state=foo_state&redirect_uri=https%3A%2F%2Ftestflaskhtml-patelmonalisa.c9.io%2Fredirect.html&client_id=<client_id>&scope=shared_vault_transaction&user%5Bcountry%5D=USA&business%5Bregistered_as%5D=14.0+Ladders&business%5Bname%5D=14+Ladders&signature=4cf16e3c28b3741e03ebf0ac4f4725fdae74ae4c6acde31a6c2324f11909865c&algorithm=SHA256"}}
+
+  <form>
+      {{braintree-dropin
+        token='{"test": "test"}'
+        onReady=(action 'onReady')
+        onPaymentMethodNonceReceived=(action 'onPaymentMethodNonceReceived')
+        onError=(action 'onError')
+      }}
+  </form>
