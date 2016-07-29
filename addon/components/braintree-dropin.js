@@ -12,8 +12,9 @@ export default Ember.Component.extend(InvokeActionMixin, {
   braintreeEvents: [
     'onReady', 'onPaymentMethodNonceReceived', 'onError'
   ],
-  options: {},
   token: null,
+  options: {},
+
 
   didInsertElement() {
 
@@ -24,7 +25,7 @@ export default Ember.Component.extend(InvokeActionMixin, {
     const options = Object.assign({
       container: this.get('elementId')
     }, this.get('options'));
-    
+
     if (token) {
       braintree.setup(token, 'dropin', options);
     }
@@ -33,7 +34,7 @@ export default Ember.Component.extend(InvokeActionMixin, {
   },
 
   /**
-   * Returns all of the valid Fullcalendar callback event
+   * Returns all of the valid Braintree callback event
    * names that were passed into the component.
    */
   usedEvents: computed('braintreeEvents', function() {
@@ -55,7 +56,7 @@ export default Ember.Component.extend(InvokeActionMixin, {
       // create an event handler that runs the function inside an event loop.
       actions[eventName] = (...args) => {
         Ember.run.schedule('actions', this, () => {
-          this.invokeAction(eventName, ...args, this.$());
+          this.invokeAction(eventName, ...args);
         });
       };
     });
