@@ -1,20 +1,23 @@
 import Ember from 'ember';
-const { Controller } = Ember;
+const {Controller} = Ember;
 
 export default Controller.extend({
 
-   actions: {
-     onReady() {
-       console.log('ready');
-     },
+  connectUrl: '[YOUR CONNECT URL]',
+  token: '[YOUR TOKEN]',
 
-     onPaymentMethodNonceReceived(response) {
-       console.log(response);
-     },
+  actions: {
+    onReady() {
+      console.log('Braintree Drop-in UI is ready.');
+    },
 
-     onError(err) {
-       console.log(err);
-     }
-   }
+    onSubmit(response) {
+      console.log(`Payment nonce recieved: ${response.nonce}`);
+    },
+
+    onError(err) {
+      console.log('There was an error.');
+    }
+  }
 
 });
