@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/braintree-connect-button';
-import { InvokeActionMixin } from 'ember-invoke-action';
 
-export default Ember.Component.extend(InvokeActionMixin, {
+export default Ember.Component.extend({
 
   layout: layout,
   classNames: ['braintree-connect-btn'],
@@ -23,17 +22,9 @@ export default Ember.Component.extend(InvokeActionMixin, {
       // Setup options
       const options = Object.assign({
         connectUrl: connectUrl,
-        container: this.get('elementId')
+        container: this.get('elementId'),
+        onError: this.get('onError')
       }, this.get('options'));
-
-      // Add the onError action if it was passed
-      if (this.get('onError') !== undefined) {
-        options.onError = (...args) => {
-          Ember.run.schedule('actions', this, () => {
-            this.invokeAction('onError', ...args);
-          });
-        };
-      }
 
       // Create the Braintree Connect button
       return new BraintreeOAuthConnect(options);
