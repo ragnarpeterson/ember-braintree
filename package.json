@@ -1,7 +1,7 @@
 {
   "name": "ember-braintree",
   "version": "0.1.0",
-  "description": "Ember wrapper for Braintree V.Zero SDK and Braintree Auth",
+  "description": "Braintree's Drop-In Payment UI and Braintree Auth button as Ember components.",
   "directories": {
     "doc": "doc",
     "test": "tests"
