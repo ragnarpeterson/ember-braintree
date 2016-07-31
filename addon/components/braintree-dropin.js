@@ -19,7 +19,6 @@ export default Ember.Component.extend({
     const token = this.get('token');
     const options = Object.assign({
       container: this.get('elementId'),
-      customerId: this.get('customerId'),
       onError: this.get('onError'),
       onPaymentMethodReceived: this.get('onSubmit'),
       onReady: this.get('onReady')
