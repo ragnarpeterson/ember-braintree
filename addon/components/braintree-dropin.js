@@ -1,23 +1,49 @@
-/* global braintree */
+import Ember from 'ember';
+import layout from '../templates/components/braintree-dropin';
 
-import Em from 'ember';
+export default Ember.Component.extend({
 
-export default Em.Component.extend({
-  action: 'processBraintreeNonce',
+  layout: layout,
+  classNames: ['braintree-dropin'],
+
+  customerId: null,
+  options: {},
   token: null,
 
-  _setup: function() {
-    var handler = Em.run.bind(this, this._handler),
-        token = this.get('token');
 
-    braintree.setup(token, 'dropin', {
-      container: this.elementId,
-      paymentMethodNonceReceived: handler
-    });
-  }.on('didInsertElement'),
+  didInsertElement() {
 
-  _handler: function(event, nonce) {
-    this.sendAction('action', nonce);
-    return false;
+    this._super(...arguments);
+
+    // Initialize the Braintree SDK
+    const token = this.get('token');
+    const options = Object.assign({
+      container: this.get('elementId'),
+      onError: this.get('onError'),
+      onPaymentMethodReceived: this.get('onSubmit'),
+      onReady: this.get('onReady')
+    }, this.get('options'));
+
+    if (token) {
+      braintree.setup(token, 'dropin', options);
+    }
+    else {
+      throw new Error('a valid Braintree token must be specified');
+    }
+  },
+
+  actions: {
+
+    onReady(...args) {
+      this.get('onReady')(...args);
+    },
+
+    onSubmit(...args) {
+      this.get('onSubmit')(...args);
+    },
+
+    onError(...args) {
+      this.get('onError')(...args);
+    }
   }
 });
